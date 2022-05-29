@@ -101,3 +101,14 @@ def server_time():
         "time": int(now.timestamp()),
         "prefix": config.auth_prefix
     }}
+
+@blueprint.route("/me", methods=["GET"])
+def user_info():
+    user_agent = request.user_agent.string
+    user_agent = user_agent if user_agent else "Missing Agent"
+    ip = request.remote_addr
+
+    return {"error": None, "data": {
+        "agent": user_agent,
+        "ip": ip
+    }}
