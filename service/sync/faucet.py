@@ -20,10 +20,10 @@ def process_faucet():
 
     for faucet_request in requests:
         # Add address to outputs list if missing
-        if requests.address not in outputs:
-            outputs[requests.address] = 0
+        if faucet_request.address not in outputs:
+            outputs[faucet_request.address] = 0
 
-        outputs[requests.address] += requests.amount
+        outputs[faucet_request.address] += faucet_request.amount
         processed.append(faucet_request)
 
     # There is no withdrawals to process
